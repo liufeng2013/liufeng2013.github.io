@@ -1,24 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://liufeng2013.github.io</id>
-    <title>Liufeng&apos;s Blog</title>
-    <updated>2019-07-11T09:03:04.902Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://liufeng2013.github.io"/>
-    <link rel="self" href="https://liufeng2013.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://liufeng2013.github.io/images/avatar.png</logo>
-    <icon>https://liufeng2013.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, Liufeng&apos;s Blog</rights>
-    <entry>
-        <title type="html"><![CDATA[云主机分配资源核查]]></title>
-        <id>https://liufeng2013.github.io/post/cloud-machine-check</id>
-        <link href="https://liufeng2013.github.io/post/cloud-machine-check">
-        </link>
-        <updated>2019-07-11T07:43:40.000Z</updated>
-        <summary type="html"><![CDATA[<p>云主机可以细分物理机的硬件资源，这样可以将一个大块整体的物理资源通过虚拟化技术拆分为多个按需分配的小块资源，能够充分利用现有硬件。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>云主机可以细分物理机的硬件资源，这样可以将一个大块整体的物理资源通过虚拟化技术拆分为多个按需分配的小块资源，能够充分利用现有硬件。</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>云主机分配资源核查 | Liufeng&#39;s Blog</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://liufeng2013.github.io/favicon.ico?v=1562835671244">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://liufeng2013.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://liufeng2013.github.io">
+        <img src="https://liufeng2013.github.io/images/avatar.png?v=1562835671244" class="site-logo">
+        <h1 class="site-title">Liufeng&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://liufeng2013.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">云主机分配资源核查</h2>
+            <div class="post-date">2019-07-11</div>
+            
+              <div class="feature-container" style="background-image: url('https://liufeng2013.github.io/post-images/cloud-machine-check.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>云主机可以细分物理机的硬件资源，这样可以将一个大块整体的物理资源通过虚拟化技术拆分为多个按需分配的小块资源，能够充分利用现有硬件。</p>
 <!-- more-->
 <p>项目建设过程中，申请分配的主机逐步以云主机为主，云主机在分配的时候快捷、并且资源（cpu、内存、存储）可以实现动态管理，但是相比实体机的配置信息明确而言，云主机由于是通过软件虚拟化管理创建，存在创建时设置资源疏漏或差异的情况，所以在分得云主机后，对主机的连通性及各项资源分配情况进行检查就更重要。</p>
 <h1 id="1-检查-cpu">1、检查 CPU</h1>
@@ -120,6 +201,38 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 </code></pre>
 <p>以上可以看出，前后两个命令执行后的结果，后者有一个“Disk /dev/xvde: 322.1 GB”存在，这就是额外的存储磁盘空间，需要通过格式化并挂载至操作系统后就能正常查看使用了。</p>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
