@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://liufeng2013.github.io/favicon.ico?v=1562892608361">
+<link rel="shortcut icon" href="https://liufeng2013.github.io/favicon.ico?v=1566443060779">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://liufeng2013.github.io/styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://liufeng2013.github.io">
-        <img src="https://liufeng2013.github.io/images/avatar.png?v=1562892608361" class="site-logo">
+        <img src="https://liufeng2013.github.io/images/avatar.png?v=1566443060779" class="site-logo">
         <h1 class="site-title">Liufeng&#39;s Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -215,6 +215,39 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 </code></pre>
 <p>以上可以看出，前后两个命令执行后的结果，后者有一个“Disk /dev/xvde: 322.1 GB”存在，这就是额外的存储磁盘空间，需要通过格式化并挂载至操作系统后就能正常查看使用了。</p>
+<h1 id="4-检查操作系统版本">4、检查操作系统版本</h1>
+<p>在申请云主机的时候，一般会要求指定安装的操作系统版本，并且申请方有时候会根据项目的特殊需要也会要求指定版本，比如为了方便使用 Docker 容器，那么就会要求系统版本对应的内核要高一些，对应的操作系统发行版也会要求较高版本，如 centos 7 及以上。类似这样的情况的时候，便需要在接收到云主机时检查操作系统版本。</p>
+<p>（1）、检查内核：uname -a</p>
+<p>适用于所有 linux 发行版，执行命令后，得到信息如下：</p>
+<pre><code>[rtsale@server53 ~]$ uname -a
+Linux server53 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre>
+<p>（2）、检查发行版：cat /etc/*release*</p>
+<p>网络上有多种说法和查看方法，但是经实际验证，有的需要安装命令，如 lsb_release、有的信息显示不全，如 /proc/version 等，总之不能简单快捷的查看到发行版本信息。由于项目实际应用申请的主机要么是 RedHat、要么是 CentOS，所以经过实验，上述命令基本能满足需要。</p>
+<p>得到的输出信息如下：</p>
+<pre><code>[rtsale@server59 ~]$ cat /etc/*release*
+CentOS Linux release 7.4.1708 (Core) 
+Derived from Red Hat Enterprise Linux 7.4 (Source)
+NAME=&quot;CentOS Linux&quot;
+VERSION=&quot;7 (Core)&quot;
+ID=&quot;centos&quot;
+ID_LIKE=&quot;rhel fedora&quot;
+VERSION_ID=&quot;7&quot;
+PRETTY_NAME=&quot;CentOS Linux 7 (Core)&quot;
+ANSI_COLOR=&quot;0;31&quot;
+CPE_NAME=&quot;cpe:/o:centos:centos:7&quot;
+HOME_URL=&quot;https://www.centos.org/&quot;
+BUG_REPORT_URL=&quot;https://bugs.centos.org/&quot;
+
+CENTOS_MANTISBT_PROJECT=&quot;CentOS-7&quot;
+CENTOS_MANTISBT_PROJECT_VERSION=&quot;7&quot;
+REDHAT_SUPPORT_PRODUCT=&quot;centos&quot;
+REDHAT_SUPPORT_PRODUCT_VERSION=&quot;7&quot;
+
+CentOS Linux release 7.4.1708 (Core) 
+CentOS Linux release 7.4.1708 (Core) 
+cpe:/o:centos:centos:7
+</code></pre>
 
             </div>
             
