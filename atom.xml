@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://liufeng2013.github.io</id>
     <title>Liufeng&apos;s Blog</title>
-    <updated>2019-08-22T03:04:24.546Z</updated>
+    <updated>2019-08-22T03:06:38.288Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://liufeng2013.github.io"/>
     <link rel="self" href="https://liufeng2013.github.io/atom.xml"/>
@@ -128,7 +128,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Linux server53 3.10.0-693.el7.x86_64 #1 SMP Tue Aug 22 21:09:27 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
 </code></pre>
 <p>（2）、检查发行版：cat /etc/*release*</p>
-<p>网络上有多种说法和查看方法，但是经实际验证，有的需要安装命令，如 lsb_release、有的信息显示不全，如 /proc/version 等，总之不能简单快捷的查看到发行版本信息。由于项目实际应用申请的主机要么是 RedHat、要么是 CentOS，所以经过实验，上述命令基本能满足需要。</p>
+<p>网络上有多种说法和查看方法，但是经实际验证，有的需要安装命令，如 lsb_release、有的信息显示不全，如 /proc/version 等，总之不能简单快捷的查看到发行版本信息。<font color='red'>由于项目实际应用申请的主机要么是 RedHat、要么是 CentOS，所以经过实验，上述命令基本能满足需要。</font></p>
 <p>得到的输出信息如下：</p>
 <pre><code>[rtsale@server59 ~]$ cat /etc/*release*
 CentOS Linux release 7.4.1708 (Core) 
